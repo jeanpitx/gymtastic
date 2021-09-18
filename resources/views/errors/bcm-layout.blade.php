@@ -78,7 +78,7 @@ FECHA DE PUBLICACIÓN: 09/11/2020
                     <div class="row w-100">
                         <div class="col-sm-12 col-md-10 col-lg-6 pl-5">
                             <a href="{{ url('/') }}">
-                                {!! Html::image('img/logolr.svg', 'BCM', ['class' => 'img-fluid','style' => 'max-width:400px']) !!}
+                                {!! Html::image('img/logolr.svg', {{ config('app.name', 'Laravel') }}, ['class' => 'img-fluid','style' => 'max-width:400px']) !!}
                             </a>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ FECHA DE PUBLICACIÓN: 09/11/2020
                     <div class="container w-100 pt-md-5">
                         <div class="row d-flex justify-content-center text-success pt-md-4">
                             <div class="col-auto">
-                                {!! Html::image('img/errorpage.svg', 'BCM', ['class' => 'img-fluid','style' => 'max-width:150px']) !!}
+                                {!! Html::image('img/errorpage.svg', {{ config('app.name', 'Laravel') }}, ['class' => 'img-fluid','style' => 'max-width:150px']) !!}
                             </div>
                             <div class="col-auto pt-1" style="text-align: right; font-family: Arial, Helvetica, sans-serif">
                                 <h1 class="my-2 font-error" style="font-size: 40px;">
