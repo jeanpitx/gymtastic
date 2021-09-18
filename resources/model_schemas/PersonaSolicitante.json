@@ -1,0 +1,110 @@
+[
+    {
+        "name": "id_persona_solicitante",
+        "dbType": "integer,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "id_persona",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "id_profesion",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "id_actividad",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "id_conyugue",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "id_direccion",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,PrPersona,id_conyugue"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,PrPersona,id_persona"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,PrActividad,id_actividad"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,PrDireccion,id_direccion"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,DeCatalogo,id_profesion"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PrContacto,id_persona_solicitante"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PrGastoPatrimonio,id_persona_solicitante"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,PrDireccion,pr_referencia_personal"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PrSolicitud,id_persona_solicitante"
+    }
+]

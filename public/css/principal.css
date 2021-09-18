@@ -1,0 +1,749 @@
+/**
+* Desarrollado por: Jean Pierre Meza Cevallos
+*IN: in/jeanpitx
+*FB: jeanpitx
+*TW: jeanpitx
+**/
+/***************************LAYOUT/APP.BLADE*************************/
+@font-face {
+    font-family: AleoRegularFont;
+    src: url("type/Aleo-Regular.otf");
+}
+@font-face {
+    font-family: AleoBoldFont;
+    src: url("type/Aleo-Bold.otf");
+}
+@font-face {
+    font-family: HelveticaNeuePro;
+    src: url("type/HelveticaNeueLTPro-Lt.otf");
+}
+@font-face {
+    font-family: HelveticaNeueProBold;
+    src: url("type/HelveticaNeueLTPro-Bd.otf");
+}
+
+@media (max-width: 991px) {/*MOBILES*/
+    .navfont {
+        font-family: AleoRegularFont;
+        font-size: 16px;
+    }
+}
+@media (min-width: 991px) and (max-width: 1200px) {/*MINI PCS*/
+    .navfont {
+        font-family: AleoRegularFont;
+        font-size: 12px;
+    }
+}
+@media (min-width: 1200px) {/*PCS*/
+    .navfont {
+        font-family: AleoRegularFont;
+        font-size: 13px;
+    }
+}
+
+.inmenufont {
+    font-family: AleoRegularFont;
+    font-size: 13px;
+    color: #4d4d4d;
+}
+.insubmenufont {
+    font-family: AleoRegularFont;
+    font-size: 11px;
+    color: rgb(87, 87, 87) !important;
+}
+.insubmenufontbold {
+    font-family: AleoBoldFont;
+    font-size: 11px;
+    color: rgb(87, 87, 87) !important;
+}
+.circlefont {
+    font-family: AleoRegularFont;
+    font-size: 20px;
+}
+.targetfont {
+    font-family: AleoBoldFont;
+    font-size: 16px;
+}
+.describefont {
+    font-family: HelveticaNeuePro;
+    font-size: 12px;
+    color:#00693b
+}
+.footerfont {
+    font-family: HelveticaNeuePro;
+    font-size: 14px;
+}
+.finfooterfont {
+    font-family: HelveticaNeuePro;
+    font-size: 12px;
+    color: #4d4d4d;
+}
+.aleofont {
+    font-family: AleoRegularFont;
+}
+.aleoboldfont {
+    font-family: AleoRegularFont;
+}
+.elveticafont {
+    font-family: HelveticaNeuePro;
+}
+.elveticaboldfont {
+    font-family: HelveticaNeueProBold;
+}
+
+
+.list-group-item { border-top: 0 none !important; }
+
+/** DENTRO DE LA APP COLOREAMOS EL SEPARADOR HORIZONTAL HR **/
+body{
+    background: #f7f7f7;
+}
+main{
+    background: rgb(243, 243, 243);
+}
+
+
+#app hr {
+    border: 0px transparent;
+    border-bottom: 1px solid #28a745;
+    height: 1px;
+}
+
+.junto-ud {
+    border: transparent 0 none; 
+    /*border-top: 1.1px solid #28a745;*/
+    border-bottom: 1.1px solid #218538; 
+    border-top: 1px solid #28a745;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 3%;
+    text-align: right;
+    color: #28a745;
+
+    font-family: HelveticaNeuePro;
+    font-size: 17px;
+}
+
+
+
+/*CODIGO DE AUTOMATIZACIÓN DE MENU*/
+.inmenu-items{
+    display: none;
+}
+.inmenu.current{
+    background: rgb(187, 187, 187)
+}
+
+.plusmenu-items{
+    padding-left:8%;
+    display: none;
+}
+.plusmenu-items.onplus{
+    display: block;
+}
+.plusmenu-green{
+    color:#135322 !important;
+    background: rgb(202, 202, 202) !important;
+}
+
+/*menú que aparece cuando da clic en banca en línea*/
+.float-element{
+    display: none !important;
+}
+.float-parent .nav-link{
+    color:white!important;
+}
+.float-parent .nav-link.active{
+    color:#28a745!important;
+}
+
+/**desactiva la decoracion en los links <a> la linea deajo y le da color**/
+
+a {
+    color: rgb(71, 71, 71)
+}
+
+a:hover,
+a:active,
+a:focus {
+    outline: none;
+    text-decoration: none;
+    color: rgb(149, 155, 146)
+}
+
+
+
+/**PONEMOS UNA SOMBRA ALREDEDOR DE UN OBJETO**/
+
+.container-shadow {
+    box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
+}
+
+
+/**ACTIVAMOS EL DROPDOWN CON CLICK SOLO PARA DISPOSITIVOS MÓVILES**/
+@media (max-width: 991px) {
+    .carousel-caption {
+        display: none !important;
+    }
+    /**CENTRAMOS EL LOGO CUANDO SON CELULARES**/
+    .navbar-brand {
+        margin-left: auto !important;
+        padding-right: 60px;
+        margin-right: auto !important;
+    }
+    /*PERMITE HACER SCROLL EN NAVBAR CUANDO ES DISPOSITIVO MÓVIL*/
+    /*.navbar-collapse {
+        max-height: 80vh;
+        overflow-y: auto;
+    }*/
+    .mbcard{
+        margin-bottom: 5px;
+    }
+    
+    .navbar-collapse{
+        position: absolute;
+        left: 0;
+        top:0;
+        width: 100%;
+        height: 100vh;
+        overflow-y:auto;
+        padding-bottom: 150px;
+        background: #181b16 !important;
+        opacity: 95%;
+        padding-top: 15px;
+    }
+    .navbar-collapse .dropdown-menu{
+        background: #181b16 !important;
+        /*border-color: #1aa808;*/
+        width: 98%;
+        margin-left: 1%;
+    }
+    .navbar-collapse .dropdown-menu .dropdown-item:hover{
+        /*background: #181b16 !important;*/
+        /*border-color: #1aa808;*/
+    }
+    .navbar-collapse .dropdown-item:focus {
+        background-color: transparent !important;/*CORRIGE ERROR EN EL MENU Y SUBMENU*/
+    }
+    .navbar-collapse .dropdown-menu .dropdown-item{
+        color: white !important;
+    }
+
+    .collapsing {
+        height: 0;
+        -webkit-transition-property: height, visibility;
+        transition-property: height, visibility;
+        -webkit-transition-duration: 0.30s;
+        transition-duration: 0.30s;
+        -webkit-transition-timing-function: ease;
+        transition-timing-function: ease;
+    }
+    .collapsing.width {
+        -webkit-transition-property: width, visibility;
+        transition-property: width, visibility;
+        width: 0;
+        height: auto;
+    }
+}
+
+/**ACTIVAMOS EL DROPDOWN SIN CLICK SOLO PARA DISPOSITIVOS GRANDES O PC**/
+@media (min-width: 991px) {
+    /**ACTIVAMOS EL DROPDOWN CON MOUSE ENCIMA HOVER**/
+    /*.dropdown:hover>.dropdown-menu {
+        display: block;
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
+    }
+    .dropdown-menu.show {
+        display: none;
+    }*/
+    /* LE DA LA SOMBRA AL DROPDOWN FLOTANTE */
+    .mnufloat {
+        border-color: #707c7c!important;
+        box-shadow: 0 0 0 0.4rem rgba(175, 175, 175, 0.9) !important;
+    }
+    .dropdown>.dropdown-menu {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
+    }
+    .carousel-caption {
+        display: block !important;
+    }
+}
+
+
+/**CAMBIAMOS COLOR DE ITEM DEL NAVBAR CUALDO EL MOUSE PASA ENCIMA HOVER**/
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #181b16;
+    text-decoration: none;
+    background-color: #eaeaea;
+}
+
+
+/******************** CONFIGURAMOS FOOTER **************************/
+.site-footer {
+    position: fixed;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+/** MANDAMOS UN ESPACIO AL FINAL DEL CONTENEDOR PARA QUE SOBREPASE FOOTER  **/
+
+#app {
+    background: #f1f1f1;
+    margin-bottom: 100px;
+}
+
+
+/***************************FRONTEND/WELCOME.BLADE*************************/
+.mnu-color {
+    background-color: rgb(226, 226, 226);
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.mnu-uniline {
+    white-space: pre;
+}
+
+.div-img-round {
+    background: rgba(65,148,35,1);
+    background: -moz-linear-gradient(45deg, rgba(65,148,35,1) 0%, rgba(184,207,56,1) 78%, rgba(119,189,27,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(65,148,35,1)), color-stop(78%, rgba(184,207,56,1)), color-stop(100%, rgba(119,189,27,1)));
+    background: -webkit-linear-gradient(45deg, rgba(65,148,35,1) 0%, rgba(184,207,56,1) 78%, rgba(119,189,27,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(65,148,35,1) 0%, rgba(184,207,56,1) 78%, rgba(119,189,27,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(65,148,35,1) 0%, rgba(184,207,56,1) 78%, rgba(119,189,27,1) 100%);
+    background: linear-gradient(45deg, rgba(65,148,35,1) 0%, rgba(184,207,56,1) 78%, rgba(119,189,27,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#419423', endColorstr='#77bd1b', GradientType=1 );
+}
+
+.img-round-title {
+    color:rgb(98, 167, 42);
+}
+.img-round-title>b{
+    color:rgb(19, 77, 33);
+}
+.img-round-title>strong{
+    color:rgb(19, 77, 33);
+}
+.img-round-text {
+    line-height : 20px;
+    text-align: justify;
+}
+
+@media (min-width: 0px) and (max-width: 575px) {
+    .img-round {
+        width:130px;
+        height:130px;
+        margin-top: 5px;
+        padding: 2px 2px 0px 2px;
+    }
+    .div-img-round {
+        width: 142px;
+        height: 142px;
+        border-radius: 50%;
+    }
+}
+@media  (min-width: 575px) and (max-width: 767px) {
+    .img-round {
+        width:150px;
+        height:150px;
+        margin-top: 7px;
+    }
+    .div-img-round {
+        width: 166px;
+        height: 166px;
+        border-radius: 50%;
+    }
+}
+@media  (min-width: 767px) and (max-width: 1200px) {
+    .img-round {
+        width:180px;
+        height:180px;
+        margin-top: 7px;
+    }
+    .div-img-round {
+        width: 196px;
+        height: 196px;
+        border-radius: 50%;
+    }
+    .mw-xl{
+        max-width: 90% !important
+    }
+    .inmenu-pd-lg-1{
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+    }
+}
+@media  (min-width: 1200px) {
+    .img-round {
+        width:150px;
+        height:150px;
+        margin-top: 8px;
+    }
+    .div-img-round {
+        width:166px;
+        height:166px;
+        border-radius: 50%;
+    }
+    .mw-xl{
+        max-width: 90% !important
+    }
+}
+
+/*NAVBAR ICONOS*/
+@media (max-width: 992px) {
+    .icobig-xs{
+        font-size: 30px;
+    }
+}
+/*NAVBAR ICONOS*/
+@media (min-width: 0px) and (max-width: 992px) {
+    .mr-xs-1{
+        margin-right: 10px!important;
+    }
+
+    .mr-xs-2{
+        margin-right: 20px!important;
+    }
+}
+
+/*FONDO POLIGONO BODY*/
+.cuadrado {
+    position: absolute;
+    bottom: 0px;
+    background: #dbdbdb;
+    width: 100%; 
+    left: 0;
+    z-index: -1;
+    clip-path: polygon(0% 40px, 100% 0%, 100% 100%, 0% 100%);
+    font-family: 'Panton-BlackCaps';
+}
+/*ASIGNAMOS EL TAMAÑO DEL POLIGONO EN CASO QUE SEA DISPOSITIVOS MÓVILES*/
+@media (min-width: 1200px) {.cuadrado-sz {height: 73%;}}
+@media (min-width: 992px) and (max-width: 1200px) {.cuadrado-sz {height: 87%;}}
+@media (min-width: 768px) and (max-width: 992px) {.cuadrado-sz {height: 86%;}}
+@media (min-width: 575px) and (max-width: 768px) {.cuadrado-sz {height: 83%;}}
+@media (min-width: 470px) and (max-width: 575px) {.cuadrado-sz {height: 68%;}}
+@media (min-width: 403px) and (max-width: 470px) {.cuadrado-sz {height: 66%;}}
+@media (min-width: 360px) and (max-width: 403px) {.cuadrado-sz {height: 65%;}}
+@media (min-width: 0px) and (max-width: 360px) {.cuadrado-sz {height: 63%;}}
+
+/**Cambia el estilo del caption y los indicadores del carrusel**/
+
+.carousel-caption p,
+.carousel-caption h5 {
+    color: white;
+    text-shadow: 1px 0 0 #6c757d, -1px 0 0 #6c757d, 0 1px 0 #6c757d, 0 -1px 0 #6c757d;
+}
+
+.carousel-indicators li {
+    background-color: green;
+}
+
+
+/**Muestra un div encima del carrusel con el contenido del texto del carrusel**/
+/*
+#carouselPrincipal .carousel-caption {
+    color: white;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 35px;
+    padding-top: 5px;
+  
+    background: rgba(0,0,0,0);
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 31%, rgba(0,0,0,0.79) 63%, rgba(0,0,0,0.85) 85%, rgba(0,0,0,0.85) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(31%, rgba(0,0,0,0.55)), color-stop(63%, rgba(0,0,0,0.79)), color-stop(85%, rgba(0,0,0,0.85)), color-stop(100%, rgba(0,0,0,0.85)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 31%, rgba(0,0,0,0.79) 63%, rgba(0,0,0,0.85) 85%, rgba(0,0,0,0.85) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 31%, rgba(0,0,0,0.79) 63%, rgba(0,0,0,0.85) 85%, rgba(0,0,0,0.85) 100%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 31%, rgba(0,0,0,0.79) 63%, rgba(0,0,0,0.85) 85%, rgba(0,0,0,0.85) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 31%, rgba(0,0,0,0.79) 63%, rgba(0,0,0,0.85) 85%, rgba(0,0,0,0.85) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+}
+*/  /*opacity: .9;*/
+
+/**MEJORAMOS LA VISTA DEL CAPTION DEL CARRUSEL MOSTRADO EN CELULARES**/
+
+.cp-min {
+    min-height: 130px;
+    padding-top: 2%;
+}
+
+.carousel-ext-caption a {
+    margin-top: -20px;
+    margin-bottom: -10px;
+}
+
+
+/***************************BACKEND/FORMULARIOS*************************/
+
+
+/**Traduce el texto de de browse seleccionar un archivo**/
+
+.custom-file-input~.custom-file-label::after {
+    content: "Seleccionar ";
+}
+
+
+/* solo se utiliza si hubiera una url en el titulo de la hora para dejarlo blanco**/
+
+
+/*.titulo-fondo a  { 
+    font-size: 14px;
+    color: white;
+}*/
+
+/****************** COLORES BOTONES NAVBAR *******************/
+@media (min-width: 992px) {
+    .container-sm {
+        width: 100%;
+        padding-right: 90px;
+        padding-left: 90px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+@media (min-width: 1200px) {
+    .container-sm {
+        width: 100%;
+        padding-right: 135px;
+        padding-left: 135px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.btn-linea{
+    background: rgba(99,209,8,1);
+    background: -moz-linear-gradient(left, rgba(99,209,8,1) 0%, rgba(72,128,23,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(99,209,8,1)), color-stop(100%, rgba(72,128,23,1)));
+    background: -webkit-linear-gradient(left, rgba(99,209,8,1) 0%, rgba(72,128,23,1) 100%);
+    background: -o-linear-gradient(left, rgba(99,209,8,1) 0%, rgba(72,128,23,1) 100%);
+    background: -ms-linear-gradient(left, rgba(99,209,8,1) 0%, rgba(72,128,23,1) 100%);
+    background: linear-gradient(to right, rgba(99,209,8,1) 0%, rgba(72,128,23,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63d108', endColorstr='#488017', GradientType=1 );
+}
+
+.btn-linea:hover {
+    color: #fff;
+    background-color: #d8dbdd;
+    border-color: #1aa808;
+}
+
+.btn-light-new {
+    color: #212529;
+    background-color: transparent;
+    border-color: transparent;
+}
+.btn-light-new:hover {
+    color: #212529;
+    background-color: rgb(187, 187, 187);
+    border-color: #b6bdc2;
+}
+
+.btn-light-nav {
+    color: #212529;
+    background-color: #dddcdc;
+    border-color: #e4e4e4;
+}
+.btn-light-nav:hover {
+    color: #212529;
+    background-color: #e4e4e4;
+    border-color: #aaaaaa;
+}
+
+
+.btn-light-new2 {
+    color: #292c30;
+    background-color: transparent;
+    border-color: transparent;
+}
+.btn-light-new2:hover {
+    color: #212529;
+    background-color: rgb(199, 197, 197);
+    border-color: #b6bdc2;
+}
+
+
+.btn-light-new-oscure {
+    color: #212529;
+    background-color: #c7c7c7;
+    border-color: #e4e4e4;
+}
+.btn-light-new-oscure:hover {
+    color: #212529;
+    background-color: #e4e4e4;
+    border-color: #b6bdc2;
+}
+/*CORRIGE PROBLEMAS DE BOOTSTRAP CON DISPOSITIVOS MAS PEQUEÑOS*/
+@media (min-width: 0px) and (max-width: 575px) {
+    .col-xs-3 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .col-xs-4 {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+    .col-xs-5 {
+        -ms-flex: 0 0 41.666667%;
+        flex: 0 0 41.666667%;
+        max-width: 41.666667%;
+    }
+    .col-xs-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col-xs-7 {
+        -ms-flex: 0 0 58.333333%;
+        flex: 0 0 58.333333%;
+        max-width: 58.333333%;
+    }
+    .col-xs-8 {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+}
+/*CORRIGE PROBLEMAS DE BOOTSTRAP CON DISPOSITIVOS MAS PEQUEÑOS*/
+@media (min-width: 0px) and (max-width: 575px) {
+    .text-xs-left {
+      text-align: left !important;
+    }
+    .text-xs-right {
+      text-align: right !important;
+    }
+    .text-xs-center {
+      text-align: center !important;
+    }
+}
+/*CORRIGE PROBLEMAS DE BOOTSTRAP CON DISPOSITIVOS MAS PEQUEÑOS*/
+@media (min-width: 0px) and (max-width: 575px) {
+    .d-rounded-xs{
+        display: block !important;
+    }
+    .d-rounded-lg{
+        display: none !important;
+    }
+}
+/*CORRIGE PROBLEMAS DE BOOTSTRAP CON DISPOSITIVOS MAS PEQUEÑOS*/
+@media (min-width: 575px)  {
+    .d-rounded-xs{
+        display: none !important;
+    }
+}
+/*CORRIGE PROBLEMAS DE BOOTSTRAP CON DISPOSITIVOS MAS PEQUEÑOS*/
+@media (min-width: 0px) and (max-width: 575px) {
+    .px-sm-2 {
+        padding-right: 0.5rem !important;
+        padding-left: 0.5rem !important;
+    }
+}
+
+
+
+.list-group-none {
+    border-radius: 0;
+}
+  
+.list-group-none > .list-group-item {
+    border-width: 0;
+}
+  
+.list-group-none > .list-group-item:last-child {
+    border-bottom-width: 0;
+}
+
+.scrollgreen {
+    position: relative;
+    overflow-y: scroll;
+    height: 200px;
+    scrollbar-color: rgb(194, 230, 180) #F5F5F5;
+    scrollbar-width: thin;
+}
+
+@media (min-width: 992px) {
+    .fondo-opaco {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1040 !important;
+        width: 100%;
+        height: 100%;
+        outline: 0;
+        display: none;
+        background-color: black;
+        opacity:0.6;
+        overflow-x:hidden !important;
+        overflow-y:hidden !important;
+    }
+    .flotante{
+        z-index: 1050 !important;
+    }
+
+}
+@media (max-width: 992px) {
+    .flotante{
+        max-width: 80%;
+        margin-left: 10% !important;
+    }
+}
+.flotante .collapsed{
+    color:#00693b !important;
+    background:none !important;
+    background-color:#dadada !important;
+    border: transparent !important;
+    font-size: 20px;
+    font-family: AleoRegularFont;
+}
+.flotante .collapsed:hover{
+    background-color:#e7e7e7 !important;
+}
+.flotante .collapsed >i{
+    color:#00693b !important;
+}
+/*.contenido a{ se comenta 24/03/2021 para que los enlaces tengan otro diseño
+    color:#28623c !important;
+}*/
+.contenido>.titlecontent{/*TITULO*/
+    font-family: AleoRegularFont;
+    font-size: 20px;
+    color:rgb(46, 167, 42);
+    width: 100%;
+    padding-bottom: 5px;
+    padding-left:5px;
+    border-bottom: 1px solid rgb(46, 167, 42);
+}   
+.contenido>.titlecontent>b{/*TITULO bold*/
+    color:rgb(19, 77, 33);
+}
+.contenido> h6, .contenido> h5, .contenido> h4,.contenido> h3,.contenido> h2,.contenido> h1{/*SUBTITULO*/
+    font-family: AleoRegularFont;
+    font-size: 15px;
+    color:#19742e;
+    font-weight: bold;
+    width: 100%;
+    margin-top:20px !important;
+    padding-bottom: 5px;
+    padding-left:5px;
+    border-bottom: 1px solid rgb(60, 97, 30);
+}
+.contenido{/*contenido*/
+    font-family: AleoRegularFont;
+    font-size: 14px;
+}
+.contenido>p{/*contenido*/
+    padding-left: 5px;
+}
+.contenido>ul{/*lista*/
+    padding-left: 25px;
+}

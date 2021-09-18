@@ -1,0 +1,128 @@
+/**
+ *Desarrollado por: Jean Meza Cevallos
+ *JEAN PIERRE MEZA CEVALLOS
+ *IN: in/jeanpitx
+ *FB: jeanpitx
+ *TW: jeanpitx
+**/
+
+.container1 {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: center;
+}
+
+.container1 .ui-card {
+    width: 28rem;
+    position: center;
+    z-index: 1;
+    -webkit-transform: scale(0.6) translateY(-2rem);
+    transform: scale(0.6) translateY(-2rem);
+    cursor: pointer;
+    pointer-events: none;
+    background: #2e5266;
+    background: -webkit-gradient(linear, left bottom, left top, from(#2e5266), to(#6e8898));
+    background: linear-gradient(to top, #2e5266, #6e8898);
+    -webkit-transition: 1s;
+    transition: 1s;
+    /*padding-left: 10px;*/
+    text-align: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size: 100% 100%;
+    color: black;
+    font-style: bold;
+    font-size: 12px;
+}
+
+@media (min-width: 1200px) {.container1 .ui-card {height: 12rem; padding-top: 190px;}}
+@media (min-width: 992px) and (max-width: 1200px) {.container1 .ui-card {height: 10rem; padding-top: 160px;}}
+@media (min-width: 575px) and (max-width: 992px) {.container1 .ui-card {height: 8rem; padding-top: 130px;}}
+@media (min-width: 0px) and (max-width: 575px) {.container1 .ui-card {height: 5rem; padding-top: 80px;}}
+
+.container1 .ui-card:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    bottom: -5rem;
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+}
+
+.container1 .ui-card:nth-child(0):before {
+    content: '0';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 3rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+.container1 .ui-card:nth-child(1):before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 3rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+.container1 .ui-card:nth-child(2):before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 3rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+.container1 .ui-card:nth-child(3):before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 3rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+.container1 .ui-card.active {
+    z-index: 3;
+    -webkit-transform: scale(1) translateY(0) translateX(0);
+    transform: scale(1) translateY(0) translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
+.container1 .ui-card.prev,
+.container1 .ui-card.next {
+    z-index: 2;
+    -webkit-transform: scale(0.8) translateY(-1rem) translateX(0);
+    transform: scale(0.8) translateY(-1rem) translateX(0);
+    opacity: 0.6;
+    pointer-events: auto;
+    -webkit-transition: 1s;
+    transition: 1s;
+}

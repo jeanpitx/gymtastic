@@ -1,0 +1,62 @@
+[
+    {
+        "name": "id_catalogo",
+        "dbType": "integer,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "descripcion",
+        "dbType": "string,100",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "id_tipo_catalogo",
+        "dbType": "integer,false",
+        "htmlType": null,
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,DeTipoCatalogo,id_tipo_catalogo"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PrActividad,id_actividad_empresa"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PrDireccion,id_ciudad"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PrPersona,id_nacionalidad"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PrPersonaSolicitante,id_profesion"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,PrPersona,pr_referencia_bancaria"
+    }
+]

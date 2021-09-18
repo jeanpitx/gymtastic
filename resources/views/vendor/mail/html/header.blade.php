@@ -1,0 +1,11 @@
+<tr>
+<td class="header">
+@if (trim($slot) === 'Laravel')
+<img src="https://www.bcmanabi.com/img/logolr.png" alt="BCM Logo" style="width:45%">
+<!--<img src="https://laravel.com/img/notification-logo.png" class="logo" alt="Laravel Logo">-->
+@else
+<img src="https://www.bcmanabi.com/img/logolr.png" alt="BCM Logo" style="width:45%">
+<!--{{ $slot }}-->
+@endif
+</td>
+</tr>

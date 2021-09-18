@@ -1,0 +1,102 @@
+[
+    {
+        "name": "id_enlace",
+        "dbType": "integer,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "referencia",
+        "dbType": "string,100",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "url",
+        "dbType": "string,500:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "metodo",
+        "dbType": "string,20:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "estado",
+        "dbType": "string,10:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "privilegios",
+        "dbType": "string,10:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PwCarousel,id_enlace"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PwFixedOption,id_enlace"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,PwFooter,pw_footer_elements"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PwMenu,id_enlace"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,PwMenu,pw_menu_pnivel"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,PwMenuPnivel,pw_menu_snivel"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,PwTarjetum,id_enlace"
+    }
+]
