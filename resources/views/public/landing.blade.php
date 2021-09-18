@@ -279,7 +279,7 @@ FECHA DE PUBLICACIÓN: 31/08/2020
             @include('flash::message')
             <div class="container-fluid px-0 py-0"> <!--p4-4 da un espacio arriba del contenido-->
                 <div class="row">
-                    <div class="collapse multi-collapse" id="colapsito">
+                    <div class="w-100" id="colapsito">
                         <div class="card" style="border-radius: 0%; border-style: none;">
                             <div class="card-body px-0 py-0">
                                 <div id="loading" style="position: absolute; left:0; z-index:100; width:100%; height:100%; background:white; padding-top:10px; color:rgb(92, 89, 89); text-align:center; font-size:20px; display:none;">
