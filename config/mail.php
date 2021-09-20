@@ -2,9 +2,7 @@
 
 return [
 
-    'notifierbmcsoli' => env('MAIL_TO_OPERATOR_ADDRESS_SOLICITUD', ''),
-    'notifierbcmcontact' => env('MAIL_TO_OPERATOR_ADDRESS_CONTACTO', ''),
-    'notifierbcmjob' => env('MAIL_TO_OPERATOR_ADDRESS_EMPLEO', ''),
+    'notifieroperator' => env('MAIL_TO_OPERATOR_ADDRESS', ''),
     
     /*
     |--------------------------------------------------------------------------

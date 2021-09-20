@@ -399,60 +399,30 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                                     <div class="row d-flex  justify-content-around">
                                         <div class="form-group col-md-6">
                                             <div class="col ">
-                                                {!! Form::label('correo', 'Correo Electrónico') !!}<b class="text-danger"> *</b>
+                                                {!! Form::label('email', 'Correo Electrónico') !!}<b class="text-danger"> *</b>
                                                 <div class="input-group input-group-sm margin-bottom-sm">
                                                     <div class="input-group-prepend"><i class="input-group-text fa fa-envelope"></i></div>
-                                                    {!! Form::email('correo', null, ['class' =>
-                                                    'form-control form-control-sm tolower '.($errors->has('correo')?'
+                                                    {!! Form::email('email', null, ['class' =>
+                                                    'form-control form-control-sm tolower '.($errors->has('email')?'
                                                     is-invalid':''),'placeholder' => 'Ingrese su correo','required']) !!}
                                                     <span
-                                                        class="invalid-feedback">{{ $errors->first('correo') }}</span>
+                                                        class="invalid-feedback">{{ $errors->first('email') }}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <div class="col">
-                                                {!! Form::label('celular', 'Número Celular') !!}<b class="text-danger"> *</b>
+                                                {!! Form::label('telefono', 'Número Celular') !!}<b class="text-danger"> *</b>
                                                 <div class="input-group input-group-sm margin-bottom-sm">
                                                     <div class="input-group-prepend"><i class="input-group-text fa fa-phone"></i></div>
-                                                    {!! Form::text('celular', null, ['id'=>'celular','class' =>
-                                                    'form-control form-control-sm tolower pruebita '.($errors->has('celular')?'
+                                                    {!! Form::text('telefono', null, ['id'=>'telefono','class' =>
+                                                    'form-control form-control-sm tolower pruebita '.($errors->has('telefono')?'
                                                     is-invalid':''),'placeholder' => 'Ingrese su telefono celular','required','maxlength'=>'10','onkeypress' => 'soloNumeros(event);']) !!}
                                                     <span
-                                                        class="invalid-feedback">{{ $errors->first('celular') }}</span>
+                                                        class="invalid-feedback">{{ $errors->first('telefono') }}</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
-
-                                        <!-- Convencional y direccion-->
-                                        <div class="row d-flex  justify-content-around">
-                                            <div class="form-group col-sm-6">
-                                                <div class="col">
-                                                    {!! Form::label('convencional', 'Número Convencional') !!}
-                                                    <div class="input-group input-group-sm margin-bottom-sm">
-                                                        <div class="input-group-prepend"><i class="input-group-text fa fa-phone"></i></div>
-                                                        {!! Form::text('convencional', null, ['id'=>'convencional','class' =>
-                                                        'form-control form-control-sm tolower pruebita'.($errors->has('convencional')?'
-                                                        is-invalid':''),'placeholder' => 'Ingrese su telefono convencional','maxlength'=>'10','onkeypress' => 'soloNumeros(event);']) !!}
-                                                        <span
-                                                            class="invalid-feedback">{{ $errors->first('convencional') }}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group col-sm-6">
-                                                <div class="col">
-                                                    {!! Form::label('direccion', 'Dirección domicilio') !!}<b class="text-danger"> *</b>
-                                                    <div class="input-group input-group-sm margin-bottom-sm">
-                                                        <div class="input-group-prepend"><i class="input-group-text fa fa-map-marker"></i></div>
-                                                        {!! Form::text('direccion', null, ['class' =>
-                                                        'form-control toupper'.($errors->has('direccion')?'
-                                                        is-invalid':''),'placeholder' => 'Ingrese dirección','required']) !!}
-                                                        <span
-                                                            class="invalid-feedback">{{ $errors->first('direccion') }}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
 
                                         <!-- Sexo y Deporte que practica -->
@@ -484,68 +454,22 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                                                 </div>
                                             </div>
                                         </div>
-                                    
 
-                                    <!-- Ubicación-->
-                                    <div class="row d-flex  justify-content-around">
-                                        <div class="form-group col-md-12">
-                                            <div class="col">
-                                                <div>{!! Form::label('coordenadas', 'Seleccione ubicación domicilio') !!}<b class="text-danger"> *</b></div>
-                                                <div class="input-group input-group-sm">
-                                                    <div class="input-group-prepend"><i class="input-group-text fa fa-map fa"></i></div>
-                                                    {!! Form::text('coordenadas', null, ['class' => 'form-control form-control-sm '.($errors->has('coordenadas')?'
-                                                    is-invalid':''),'placeholder' => 'Coordenadas','readonly','required']) !!}
-
-                                                    <div class="input-group-append ctn-multiple-btn">
-                                                        <button class="btn btn-outline-info" type="button" title="Seleccionar Ubicación"  data-toggle="modal" data-target="#modalLocation" id="btn_location_persona"  style="font-size: 13px"
-                                                            data-toggle="popover" data-placement="top" data-content="Error: Seleccione su ubicación aquí">
-                                                            <i class="fa fa-map-marker"></i> Seleccionar Ubicación 
-                                                        </button>
+                                        <!-- Comentario -->
+                                        <div class="row d-flex  justify-content-around">
+                                            <div class="form-group col-sm-12">
+                                                <div class="col">
+                                                    {!! Form::label('comentario', 'Comentarios') !!}
+                                                    <div class="input-group input-group-sm margin-bottom-sm">
+                                                        <div class="input-group-prepend"><i class="input-group-text fas fa-comments"></i></div>
+                                                        {!! Form::textarea('comentario', null, ['id'=>'comentario','class' =>
+                                                        'form-control toupper'.($errors->has('comentario')?'
+                                                        is-invalid':''),'placeholder' => 'Ingrese su Comentario','rows'=> 2]) !!}
+                                                        <span class="invalid-feedback">{{ $errors->first('comentario') }}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- EMPIEZA CODIGO UBICACION PERSONA MODAL -->
-                                    <div class="modal"  id="modalLocation" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalTableTitle" >Seleccionar Ubicación</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <!-- OJO AÑADIR ctn-multi-table-modal-->
-                                                <div class="modal-body ctn-multi-table-modal">
-                                                    <p><b>Ubicación Seleccionada</b> <i id="info_ubication">ninguna</i></p>
-                                                    <div id="map"></div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                    <button id="save_ubication" type="button" class="btn btn-primary">Guardar Ubicación</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-
-                                    <!-- Comentario -->
-                                    <div class="row d-flex  justify-content-around">
-                                        <div class="form-group col-sm-12">
-                                            <div class="col">
-                                                {!! Form::label('comentario', 'Comentarios') !!}
-                                                <div class="input-group input-group-sm margin-bottom-sm">
-                                                    <div class="input-group-prepend"><i class="input-group-text fas fa-comments"></i></div>
-                                                    {!! Form::textarea('comentario', null, ['id'=>'comentario','class' =>
-                                                    'form-control toupper'.($errors->has('comentario')?'
-                                                    is-invalid':''),'placeholder' => 'Ingrese su Comentario','rows'=> 2]) !!}
-                                                    <span class="invalid-feedback">{{ $errors->first('comentario') }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="col-lg-8 offset-lg-2 col-md-9 offset-md-1 mt-3 mb-4">
@@ -638,7 +562,16 @@ FECHA DE PUBLICACIÓN: 31/08/2020
 
     <script>
         $('#colapsito').collapse('show');
-        function callFunctionPersona(){ ejecutaConsultaPersonaSimple("{{ url('/cidsoli') }}");}
+        function callFunctionPersona(){ ejecutaConsultaPersonaSimple("{{ url('/cid') }}");}
+    
+        let myVar = setInterval(myTimer, 1000);
+        function myTimer() {
+            $('.select2-selection').attr("style", "border-color: #233a85 !important");
+            $('.select2-selection').attr("style", "border-color: #233a85 !important; min-height: 32px;");
+            $('.select2-selection__arrow').attr("style", "margin-top: 2px;");
+            $('.select2-selection__rendered').attr("style", "padding-top: 2px;");
+            clearInterval(myVar);
+        }
     </script>
 </body>
 </html>

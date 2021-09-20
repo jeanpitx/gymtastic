@@ -1,6 +1,6 @@
 <?php
 //VERIFICACION INGRESO ////////////////////////////////////////////////////////////////////////**********************
-if($_SERVER[HTTP_HOST]!=="localhost"){
+if($_SERVER['HTTP_HOST']!=="localhost"){
     header('Content-Type: application/json');
     echo json_encode(array(array(
         'error'=>'Acceso no autorizado',

@@ -55,8 +55,10 @@ class SendContactRecibidaOper extends Notification // oper de operador
                         ->line('* '.$notifiable->routes['name'].' (**'.$notifiable->routes['cid'].'**) - '.strtoupper($notifiable->routes['ciudad']))
                         ->line('* **Correo electrónico**: '.$notifiable->routes['email'])
                         ->line('* **Número de teléfono**: '.$notifiable->routes['phone'])
-                        ->line('* **Tipo Consulta**: '.$notifiable->routes['tipo'])
-                        ->line('* **Mensaje**: '.$notifiable->routes['msg'])
+                        ->line('* **Fecha Nacimiento**: '.$notifiable->routes['fecha_nacimiento'])
+                        ->line('* **Sexo**: '.$notifiable->routes['sexo'])
+                        ->line('* **Deporte**: '.$notifiable->routes['deporte'])
+                        ->line('* **Comentario**: '.$notifiable->routes['msg'])
                         ->line('')
                         ->line('Por favor comuniquese lo antes posible con el cliente.');
     }

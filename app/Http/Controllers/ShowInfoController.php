@@ -78,51 +78,50 @@ class ShowInfoController extends Controller
             ]);
 
             if ($validate_recaptcha->fails()) {
-                /*Flash::error('recaptcha: no se ha superado recaptcha')->important();
-                return redirect(route('contactenos'))->withInput()->withErrors($validate_recaptcha);*/
                 abort(401, 'Ud no ha superado las validaciones del recaptcha.');
             }
         }
 
         $validator=Validator::make($request->all(), [
             'identificacion'=> 'required|max:10|string',
-            'nombres'=> 'required|min:5|max:150|string',
+            'nombres_completos'=> 'required|min:5|max:150|string',
             'email'=> 'required|min:5|max:100|email',
             'telefono'=> 'required|min:9|max:10|string',
             'ciudad'=> 'required|max:60|string',
-            'tipo_consulta'=> 'required|integer',
-            'mensaje'=> 'required|min:20|max:300|string'
+            'deporte'=> 'required|max:100|string',
+            'sexo'=> 'required|max:60|string',
+            'fecha_nacimiento'=> 'required|date',
+            'comentario'=> 'required|max:1000|string'
         ]);
 
         if ($validator->fails()) {
-            //Flash::error('Debes subir un archivo de tipo pdf.')->important();
-            return redirect(route('contactenos'))->withErrors($validator)->withInput();
+            return redirect(route('main'))->withErrors($validator)->withInput();
         }
 
-        $parametros=Parametro::where("id_parametro","4")->first()->parametro;
-        $parametros=explode(",",str_replace("\"","",$parametros));
 
         $createemail=Email::firstOrCreate(
             ["email"=>strtolower($request->email)],
             ["identificacion"=>$request->identificacion,
-            "tipo_registro"=>"FORMULARIO DE CONTACTO"
+            "tipo_registro"=>"FORMULARIO INICIAL"
         ]);
 
         //envia notificación al cliente
         \Notification::route('mail', strtolower($request->email))
-            ->route('mensaje',  "Estimado cliente, hemos recibido su solicitud, pronto un asesor se pondra en contacto con ud.")//para pasar variables
-            ->route('name',  $request->nombres)
+            ->route('mensaje',  "Estimado cliente, hemos recibido su solicitud, gracias por ponerse en contacto con nosotros.")
+            ->route('name',  $request->nombres_completos)
             ->notify(new SendContactRecibidaClient());
 
         //envia notificación al operador
-        \Notification::route('mail', explode(",",config('mail.notifierbcmcontact')))
+        \Notification::route('mail', explode(",",config('mail.notifieroperator')))
             ->route('cid',  $request->identificacion)
             ->route('ciudad',  $request->ciudad)
-            ->route('name',  $request->nombres)//para pasar variables
+            ->route('name',  $request->nombres_completos)//para pasar variables
             ->route('email',  strtolower($request->email))
             ->route('phone',  $request->telefono)
-            ->route('tipo',  $parametros[$request->tipo_consulta])
-            ->route('msg',  strtoupper($request->mensaje))
+            ->route('sexo',  $request->sexo)
+            ->route('fecha_nacimiento',  $request->fecha_nacimiento)
+            ->route('deporte',  $request->deporte)
+            ->route('msg',  strtoupper($request->comentario))
             ->notify(new SendContactRecibidaOper());
 
         Flash::overlay("Su solicitud ha sido registrada en nuestro sistema con éxito, pronto un asesor se pondrá en contacto con Ud., gracias por utilizar nuestros servicios.", "Banco comercial de manabí");
@@ -473,8 +472,10 @@ class ShowInfoController extends Controller
         return Response::json(json_decode($json), 200);
     }
 
-    
-    public function getCid(Request $request)
+    /**
+     * 
+     */
+    public function getCidProtect(Request $request)
     {
         if (empty($request->id) || !is_numeric($request->id) || strlen($request->id)<10 || strlen($request->id)>13) {
 		abort(404, 'Error con su peticion.');

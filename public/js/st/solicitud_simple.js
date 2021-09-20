@@ -77,62 +77,7 @@ $(function () {
         else if(!$('#ciudad').val()){ $('#ciudad')[0].reportValidity(); retorna=false;} //SELECT2
         else if(!$('#correo').val()){ $('#correo')[0].reportValidity(); retorna=false;}
         else if(!$('#celular').val()){ $('#celular')[0].reportValidity(); retorna=false;}
-        else if(!$('#ocupacion').val()){ $('#ocupacion')[0].reportValidity(); retorna=false;}
-        else if(!$('#coordenadas').val()){
-            $([document.documentElement, document.body]).animate({
-                scrollTop: ($("#btn_location_persona:not(:disabled)").offset().top - ($(window).height()/2))
-            }, 500);
-            $("#btn_location_persona:not(:disabled)").popover('show'); retorna=false;
-        }
-        
-        //VALIDA DATOS ESTUDIANTE
-        if($('#ocupacion').val()=="Estudiante"){
-            if(!$('#universidad').val()){ $('#universidad')[0].reportValidity(); retorna=false;}
-            else if(!$('#carrera').val()){ $('#carrera')[0].reportValidity(); retorna=false;}
-            else if(!$('#semestre').val()){ $('#semestre')[0].reportValidity(); retorna=false;}
-        }
-        
-        //VALIDA DATOS DEPENDIENTE
-        else if($('#ocupacion').val()=="Dependiente"){
-            if(!$('#tipo_empresa').val()){ $('#tipo_empresa')[0].reportValidity(); retorna=false;}
-            else if(!$('#empresa').val()){ $('#empresa')[0].reportValidity(); retorna=false;}
-            else if(!$('#cargo').val()){ $('#cargo')[0].reportValidity(); retorna=false;}
-            else if(!$('#antiguedad').val()){ $('#antiguedad')[0].reportValidity(); retorna=false;}
-            else if(!$('#tipo_contrato').val()){ $('#tipo_contrato')[0].reportValidity(); retorna=false;}
-            else if(!$('#rango_sueldo').val()){ $('#rango_sueldo')[0].reportValidity(); retorna=false;}
-            else if(!$('#direccion_negocio_dependiente').val()){ $('#direccion_negocio_dependiente')[0].reportValidity(); retorna=false;}
-            else if(!$('.coordenadas_negocio:not(:disabled)').val()){
-                $([document.documentElement, document.body]).animate({
-                    scrollTop: ($(".btn_location_empresa:not(:disabled)").offset().top - ($(window).height()/2))
-                }, 500);
-                $(".btn_location_empresa:not(:disabled)").popover('show'); retorna=false;
-            }
-        }
-
-        //VALIDA DATOS JUBILADO
-        else if($('#ocupacion').val()=="Jubilado"){    
-            if(!$('#tipo_empresa_jubilado').val()){ $('#tipo_empresa_jubilado')[0].reportValidity(); retorna=false;}
-            else if(!$('#rango_pension').val()){ $('#rango_pension')[0].reportValidity(); retorna=false;}
-        }
-
-        //VALIDA DATOS INDEPENDIENTE
-        else if($('#ocupacion').val()=="Persona Independiente"){    
-            if(!$('#tipo_actividad').val()){ $('#tipo_actividad')[0].reportValidity(); retorna=false;}
-            else if(!$('#regimen').val()){ $('#regimen')[0].reportValidity(); retorna=false;}
-            else if(!$('#antiguedad_independiente').val()){ $('#antiguedad_independiente')[0].reportValidity(); retorna=false;}
-            else if(!$('#tipo_negocio').val()){ $('#tipo_negocio')[0].reportValidity(); retorna=false;}
-            else if(!$('#rango_ingresos').val()){ $('#rango_ingresos')[0].reportValidity(); retorna=false;}
-            else if(!$('#direccion_negocio_independiente').val()){ $('#direccion_negocio_independiente')[0].reportValidity(); retorna=false;}
-            else if(!$('.coordenadas_negocio:not(:disabled)').val()){
-                console.log("validando coordenadas");
-                $([document.documentElement, document.body]).animate({
-                    scrollTop: ($(".btn_location_empresa:not(:disabled)").offset().top - ($(window).height()/2))
-                }, 500);
-                $(".btn_location_empresa:not(:disabled)").popover('show'); retorna=false;
-            }
-        }
-        
-
+    
         if(!retorna){
             $('#btnsave').popover('toggle');
             $("button[aria-controls='colapsito'][aria-expanded='true']").popover('show');

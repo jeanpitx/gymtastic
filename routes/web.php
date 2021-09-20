@@ -50,10 +50,10 @@ Route::group(['middleware' => ['verified','locked:next']], function () {
 
 //****************RUTAS PÚBLICAS
 //RUTAS DE SHOW INDEX
-Route::get('/', 'ShowInfoController@index');
+Route::get('/', 'ShowInfoController@index')->name('main');
 Route::get('/content/{page}', 'ShowInfoController@interna')->name('content');
 Route::get('/content/productos/{page}', 'ShowInfoController@categoria')->name('category');
-Route::get('/cid/{id}', 'ShowInfoController@getCid')->name('getcid');
+Route::get('/cid/{id}', 'ShowInfoController@getCidProtect')->name('getcid');
 Route::get('/cidsoli/{id}', 'ShowInfoController@getCidSolicita')->name('getcidsoli');
 Route::get('/cidpublic/{id}', 'ShowInfoController@getCidPublic')->name('getcidpublic');
 Route::get('/apiprovinces', 'ShowInfoController@getApiProvinces')->name('provinces');
