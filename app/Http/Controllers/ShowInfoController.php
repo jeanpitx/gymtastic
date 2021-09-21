@@ -459,7 +459,7 @@ class ShowInfoController extends Controller
         if (empty($request->id) || !is_numeric($request->id) || strlen($request->id)<10 || strlen($request->id)>13) {
 		    abort(404, 'Error con su peticion.');
         }
-        $json = file_get_contents('http://localhost/wp-access/cid.php?ci='.$request->id);
+        $json = file_get_contents('https://www.entrenadinamica.com/wp-access/cid.php?ci='.$request->id);
         if(!$json)
             $json = json_encode(array(array("error"=>'La cedula consultada es erronea')));
 
@@ -480,7 +480,7 @@ class ShowInfoController extends Controller
         if (empty($request->id) || !is_numeric($request->id) || strlen($request->id)<10 || strlen($request->id)>13) {
 		abort(404, 'Error con su peticion.');
         }
-        $json = file_get_contents('http://localhost/wp-access/cid.php?ci='.$request->id);
+        $json = file_get_contents('https://www.entrenadinamica.com/wp-access/cid.php?ci='.$request->id);
         if(!$json)
             $json = json_encode(array(array("error"=>'La cedula consultada es erronea')));;
         return Response::json(json_decode($json), 200);
@@ -505,7 +505,7 @@ class ShowInfoController extends Controller
                 return Response::json(array(array("error"=>'La persona con la identificación: '.$request->id.', ya ha solicitado tarjeta.')), 200);
         }
 
-        $json = file_get_contents('http://localhost/wp-access/cid.php?ci='.$request->id);
+        $json = file_get_contents('https://www.entrenadinamica.com/wp-access/cid.php?ci='.$request->id);
         if(!$json)
             $json = json_encode(array(array("error"=>'La cedula consultada es erronea')));
 

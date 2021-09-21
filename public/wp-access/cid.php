@@ -1,9 +1,9 @@
 <?php
 //VERIFICACION INGRESO ////////////////////////////////////////////////////////////////////////**********************
-if($_SERVER['HTTP_HOST']!=="localhost"){
+if($_SERVER['REMOTE_ADDR']!=="185.224.137.198" && $_SERVER['REMOTE_ADDR']!=="200.93.194.66"){
     header('Content-Type: application/json');
     echo json_encode(array(array(
-        'error'=>'Acceso no autorizado',
+        'error'=>'Acceso no autorizado - '.$_SERVER['REMOTE_ADDR'],
     	'identity'=>null,
     	'name'=>null,
     	'genre'=>null,
