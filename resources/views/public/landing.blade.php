@@ -152,17 +152,6 @@ FECHA DE PUBLICACIÓN: 31/08/2020
         @media (min-width: 575px) and (max-width: 768px) {#extension_empresa{max-width:60px;}}
         @media (min-width: 0px) and (max-width: 575px) {#extension_empresa{max-width:50px;}}
     </style>
-    <style>
-        #map {
-          height: 55vh;
-        }
-    </style>
-    <style>
-        #map_empresa {
-          height: 55vh;
-        }
-    </style>
-
     @if(config('recaptcha-v3.enable'))
         <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render={{config('recaptcha-v3.site_key')}}"></script>
     @endif
@@ -172,14 +161,6 @@ FECHA DE PUBLICACIÓN: 31/08/2020
     {!! Html::script('libs/bootstrap4/js/popper.min.js') !!}
     {!! Html::script('libs/bootstrap4/js/bootstrap.min.js') !!}
     
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P19PKZR4Q2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-P19PKZR4Q2');
-    </script>
     <style>
         @font-face { font-family: CodecProBold; src: url("css/type/Codec-Pro-Bold-trial.ttf");}
         @font-face { font-family: CodecPro; src: url("css/type/Codec-Pro-News.ttf");}
@@ -540,10 +521,6 @@ FECHA DE PUBLICACIÓN: 31/08/2020
     {!! Html::script('js/st/solicitud_simple.js') !!}
     {!! Html::script('js/validaciones.js') !!}
     {!! Html::script('js/principal.js') !!}
-
-    <script defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYJO2PChEbwGdiy5NKxl7m5tAeFaMOIFg&callback=initMap">
-    </script>
 
     @if(config('recaptcha-v3.enable'))
         <script>
