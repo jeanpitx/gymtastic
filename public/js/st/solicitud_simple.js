@@ -75,8 +75,8 @@ $(function () {
         else if(!$('#nombres_completos').val()){ $('#nombres_completos')[0].reportValidity(); retorna=false;}
         else if(!$('#fecha_nacimiento').val()){ $('#fecha_nacimiento')[0].reportValidity(); retorna=false;}
         else if(!$('#ciudad').val()){ $('#ciudad')[0].reportValidity(); retorna=false;} //SELECT2
-        else if(!$('#correo').val()){ $('#correo')[0].reportValidity(); retorna=false;}
-        else if(!$('#celular').val()){ $('#celular')[0].reportValidity(); retorna=false;}
+        else if(!$('#email').val()){ $('#email')[0].reportValidity(); retorna=false;}
+        else if(!$('#telefono').val()){ $('#telefono')[0].reportValidity(); retorna=false;}
     
         if(!retorna){
             $('#btnsave').popover('toggle');
