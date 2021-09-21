@@ -48,8 +48,8 @@ class SendContactRecibidaOper extends Notification // oper de operador
     {
 
         return (new MailMessage)
-                        ->subject('Nueva Solicitud de productos BCM! - '.$notifiable->routes['tipo'])
-                        ->greeting('Nueva solicitud de productos BCM!')
+                        ->subject('Nueva Solicitud de contacto!')
+                        ->greeting('Nueva solicitud de contacto!')
                         ->salutation('Saludos')
                         ->line('El sistema de solicitud de productos BCM ha recibído una nueva su solicitud con los siguientes datos:')
                         ->line('* '.$notifiable->routes['name'].' (**'.$notifiable->routes['cid'].'**) - '.strtoupper($notifiable->routes['ciudad']))

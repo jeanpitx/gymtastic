@@ -126,7 +126,7 @@ class ShowInfoController extends Controller
 
         Flash::overlay("Su solicitud ha sido registrada en nuestro sistema con éxito, pronto un asesor se pondrá en contacto con Ud., gracias por utilizar nuestros servicios.", "Banco comercial de manabí");
 
-        return redirect(route('contactenos'));
+        return redirect(route('main'));
     }
 
     /**
