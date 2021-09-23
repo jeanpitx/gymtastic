@@ -165,9 +165,9 @@ FECHA DE PUBLICACIÓN: 31/08/2020
         @font-face { font-family: CodecProBold; src: url("css/type/Codec-Pro-Bold-trial.ttf");}
         @font-face { font-family: CodecPro; src: url("css/type/Codec-Pro-News.ttf");}
         .input-group-text{
-            background: #17a2b8 !important;
-            color: white !important;
-            border-radius: 0 !important;
+            background: #9fdfc2  !important;
+            color: #184d81 !important;
+            /*border-radius: 0 !important;*/
             border-color: #233a85 !important;
         }
         .input-group-append button{
@@ -182,9 +182,11 @@ FECHA DE PUBLICACIÓN: 31/08/2020
             font-family: CodecPro;
         }
         .title{height:90px;}
-        .title-blue{background: #233A85; color:#fff;}
+        .title-white{background: #fff; color:#24405c;}
+        .title-blue{background: #24405c; color:#fff;}
+        .title-green{background: #73bb9b ; color:#24405c;}
         .title-grey{background: #c8ced3; color:#233A85;}
-        .title-pink{background: #f29a9d; color:#233A85;}
+        .title-pink{background: #f75c5c ; color:#24405c;}
         .title-cian{background: #60bfe7; color:#233A85;}
         .title h1{font-size:28px;width: 100%; font-family: CodecPro;}
         .title h1 b{font-family: CodecProBold;}
@@ -267,18 +269,12 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                                     <p>Consultando...</p>
                                 </div>
 
-                                <div class="title title-blue w-100 col-12">
+                                <div class="title title-green w-100 col-12">
                                     <div class="offset-lg-2 col-lg-8 col-md-9 offset-md-1 col-12 h-100 d-flex align-items-center">
                                         <h1>Inicia este reto con nosotros</h1>
                                     </div>
                                 </div>
-
-                                <div class="title title-grey w-100 col-12 ">
-                                    <div class="offset-lg-2 col-lg-8 col-md-9 offset-md-1 col-12 h-100 d-flex align-items-center">
-                                        <h1>Datos Personales</h1>
-                                    </div>
-                                </div>
-
+                                
                                 <div class="col-lg-8 offset-lg-2 col-md-9 offset-md-1">
                                     <div class="form-group col-12 mt-3">
                                         <p class="form-text my-0 w-100 text-justify" style="font-size:15px; color:rgb(68, 68, 68)">
@@ -298,7 +294,7 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                                                     <span class="invalid-feedback">{{ $errors->first('identificacion') }}</span>
 
                                                     <div class="input-group-append ctn-multiple-btn">
-                                                        <button class="btn btn-outline-info" type="button" title="Consultar Identificación" id="btn_consulta_identifiacion" style="font-size: 13px">
+                                                        <button class="btn btn-outline-secondary " type="button" title="Consultar Identificación" id="btn_consulta_identifiacion" style="font-size: 13px">
                                                             <i class="fa fa-search"></i>
                                                         </button>
                                                     </div>
@@ -455,15 +451,15 @@ FECHA DE PUBLICACIÓN: 31/08/2020
 
                                 <div class="col-lg-8 offset-lg-2 col-md-9 offset-md-1 mt-3 mb-4">
                                     <div class="col text-center" style="margin-top:-10px;">
-                                        <button id="btnsave" class="btn btn-info mx-auto" type="submit" value="Guardar" style="margin-top:30px "
+                                        <button id="btnsave" class="btn btn-outline-info mx-auto" type="submit" value="Guardar" style="margin-top:30px "
                                         data-sitekey="{{config('recaptcha-v3.site_key')}}" 
                                         data-callback='onSubmit' 
                                         data-action='submit'
-                                        data-toggle="popover" title="Error" data-content="Usted no ha completado toda la información"
+                                        data-toggle="popover" title="Enviar consulta" data-content="Usted no ha completado toda la información"
                                         >
                                             Enviar consulta <i class="fa fa-save"></i>
                                         </button>
-                                        <a class="btn btn-secondary ml-2 g-recaptcha" onclick="if (!confirm('Esta seguro?, se eliminará la información ingresada')) event.preventDefault();" href="{{ route('solicita') }}" style="margin-top:30px ">
+                                        <a class="btn btn-outline-secondary ml-2 g-recaptcha" onclick="if (!confirm('Esta seguro?, se eliminará la información ingresada')) event.preventDefault();" href="{{ route('solicita') }}" style="margin-top:30px ">
                                             Cancelar <i class="fa fa-times"></i>
                                         </a>
                                     </div>
