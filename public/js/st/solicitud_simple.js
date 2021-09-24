@@ -309,7 +309,8 @@ function ejecutaConsultaPersonaSimple(urlroute){
                 }
                 $("#loading").hide();
             },
-            error: function() { alert('Error de consulta'); $("#loading").hide(); }
+            error: function() { alert('Error de consulta'); $("#loading").hide(); },
+            timeout: 5000 // sets timeout to 3 seconds
         });
     }else{
         alert("Sus datos ya han sido consultados");

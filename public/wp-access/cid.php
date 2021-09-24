@@ -117,9 +117,7 @@ if(strlen($_REQUEST['ci'])==13){ //http://173.212.220.238:8082/api/sri?ruc=13115
 	$loginFields = array('tipo' => 'getDataWsRc', 'ci' => $_REQUEST['ci'],'tp' => 'C','ise' => 'SI'); 
 	$json_string= getUrl('http://certificados.ministeriodegobierno.gob.ec/gestorcertificados/antecedentes/data.php', 'post', $loginFields,5);
 
-	
-
-	if(strlen($json_string)>0 && strpos($json_string, '"identity":"'.$_REQUEST['ci'].'"') !== false){
+	if(strlen($json_string)>0 && strpos($json_string, $_REQUEST['ci']) !== false){
 		//en caso de error devuelve la cedula consultada ya que el servicio devuelve vacio el campo
 		$json_string=str_replace( '"identity":""', '"identity":"'.$_REQUEST['ci'].'"',$json_string);
 		header('Content-Type: application/json');
@@ -128,66 +126,68 @@ if(strlen($_REQUEST['ci'])==13){ //http://173.212.220.238:8082/api/sri?ruc=13115
 		exit(0);
 	}
 	
-	echo strpos($json_string, '"identity":"'.$_REQUEST['ci'].'"');
-	exit(0);
+	//GET DATOS systems ec////////////////////////////////////////////////////////////////////////**********************
+	$json_string= getUrl('http://systemsec.com.ec/servicio/cedula.php?ci='.$_REQUEST['ci']);
 
-	//GET DATOS ministeriodegobierno reclutamiento ////////////////////////////////////////////////////////////////////////**********************
-	$loginFields = array('prc' => 'gCit', 'ci' => $_REQUEST['ci']); 
-	$json_string= getUrl('https://reclutamiento.ministeriodegobierno.gob.ec/reclutamiento3/fend/get_data.php', 'post', $loginFields,5);
-	
-
-	if(strlen($json_string)>0 && strpos($json_string, 'identity') === true){
-		//en caso de error devuelve la cedula consultada
+	if(strlen($json_string)>0 && strpos($json_string, $_REQUEST['ci']) !== false){
+		//en caso de error devuelve la cedula consultada ya que el servicio devuelve vacio el campo
 		$json_string=str_replace( '"identity":""', '"identity":"'.$_REQUEST['ci'].'"',$json_string);
 		header('Content-Type: application/json');
 		echo $json_string;
 		eliminarcookiefile();
 		exit(0);
 	}
-
-	//GET DATOS ANT ////////////////////////////////////////////////////////////////////////**********************
-	$loginFields = array('ps_tipo_identificacion' => 'CED', 'ps_identificacion' => $_REQUEST['ci']); 
-	$remote_page_content= getUrl('https://sistemaunico.ant.gob.ec:5038/PortalWEB/paginas/clientes/clp_json_consulta_persona.jsp?ps_tipo_identificacion=CED&ps_identificacion='.$_REQUEST['ci'],'post',$loginFields,5);
 	
-	if(substr_count($remote_page_content,'<td colspan="1" class="titulo1">')!=0) {
-		$posini=strpos($remote_page_content, '<td colspan="1" class="titulo1">') + strlen('<td colspan="1" class="titulo1">');
-		$posfin=strpos($remote_page_content, '&nbsp;', $posini);
-		$datos = substr($remote_page_content, $posini, ($posfin - $posini));
-
+	//GET DATOS otro sitio ////////////////////////////////////////////////////////////////////////////////////
+	$json_string= getUrl('http://173.212.220.238:8082/api/registrocivil?cedula='.$_REQUEST['ci']);
+	
+	if(strlen($json_string)>0 && strpos($json_string, $_REQUEST['ci']) !== false){
+		$json=json_decode($json_string,true);
+		//en caso de error devuelve la cedula consultada
 		header('Content-Type: application/json');
-		echo json_encode(array_map('encode_all_strings',array(array(
-		    'error'=>null,
-			'identity'=>$_REQUEST['ci'],
-			'name'=>$datos,
-			'genre'=>null,
-			'dob'=>null,
-			'nationality'=>null,
-			'residence'=>null,
-			'streets'=>null,
-			'homenumber'=>null,
-			'fingerprint'=>null,
-			'civilstate'=>null
-			))));
+		echo json_encode(array(array(
+        'error'=>'Es requerido un dato',
+    	'identity'=>$_REQUEST['ci'],
+    	'name'=>$json["result"]["NombreCiudadano"],
+    	'genre'=>$json["result"]["Sexo"],
+    	'dob'=>$json["result"]["FechaNacimiento"],
+    	'nationality'=>$json["result"]["Nacionalidad"],
+    	'residence'=>$json["result"]["DPA_ProvinNacimiento"]."/".$json["result"]["DPA_CantonNacimiento"]."/".$json["result"]["DPA_ParroqDomicilio"],
+    	'streets'=>$json["result"]["CallesDomicilio"],
+    	'homenumber'=>$json["result"]["NumeroCasa"],
+    	'fingerprint'=>null,
+    	'civilstate'=>$json["result"]["EstadoCivil"]
+    	)));
 		eliminarcookiefile();
-	    exit(0);
+		exit(0);
 	}
+	
 
+	//GET DATOS ministeriodegobierno reclutamiento no esta funcionando ahora ////////////////////////////////////////////////////////////////////////**********************
+	/*$loginFields = array('prc' => 'gCit', 'ci' => $_REQUEST['ci']); 
+	$json_string= getUrl('https://reclutamiento.ministeriodegobierno.gob.ec/reclutamiento3/fend/get_data.php', 'post', $loginFields,15);
+	
+	if(strlen($json_string)>0 && strpos($json_string, $_REQUEST['ci']) !== false){
+		//en caso de error devuelve la cedula consultada
+		$json_string=str_replace( '"identity":""', '"identity":"'.$_REQUEST['ci'].'"',$json_string);
+		header('Content-Type: application/json');
+		echo $json_string;
+		eliminarcookiefile();
+		exit(0);
+	}*/
 
+	//GET DATOS MINISTERIO DE GOBIERNO OTRA OPCION SOLO NOMBRE ////////////////////////////////////////////////////////////////////////**********************
+	$loginFields = array('tipo' => 'getDataWs', 'ci' => $_REQUEST['ci'],'tp' => 'C','ise' => 'SI'); 
+	$json_string= getUrl('http://certificados.ministeriodegobierno.gob.ec/gestorcertificados/antecedentes/data.php', 'post', $loginFields,10);
 
-	//GET DATOS COMISION DE TRANSITO CTE ////////////////////////////////////////////////////////////////////////**********************
-	$loginUrl='http://servicios.comisiontransito.gob.ec/app_citaciones_consulta/consulta_citaciones.php?p_identificacion='.$_REQUEST['ci'].'&p_tipo=1';
-	$remote_page_content= getUrl($loginUrl);
-
-	$posini=strpos($remote_page_content, '<div class="alert alert-success" role="alert">'.$_REQUEST['ci'].' - ') + strlen('<div class="alert alert-success" role="alert">'.$_REQUEST['ci'].' - ');
-	$posfin=strpos($remote_page_content, '</div>', $posini);
-	$get_result = substr($remote_page_content, $posini, ($posfin - $posini));
-
-	if(strlen($get_result)>1) {
+	if(strlen($json_string)>0 && strpos($json_string, $_REQUEST['ci']) !== false){
+		//en caso de error devuelve la cedula consultada ya que el servicio devuelve vacio el campo
+		$json=json_decode($json_string,true);
 		header('Content-Type: application/json');
 		echo json_encode(array_map('encode_all_strings',array(array(
 		    'error'=>null,
 			'identity'=>$_REQUEST['ci'],
-			'name'=>$get_result,
+			'name'=>json_decode($json_string)[0]->name,
 			'genre'=>null,
 			'dob'=>null,
 			'nationality'=>null,
@@ -198,7 +198,7 @@ if(strlen($_REQUEST['ci'])==13){ //http://173.212.220.238:8082/api/sri?ruc=13115
 			'civilstate'=>null
 			))));
 		eliminarcookiefile();
-	    	exit(0);
+		exit(0);
 	}else{
 		header('Content-Type: application/json');
 		echo json_encode(array_map('encode_all_strings',array(array(
