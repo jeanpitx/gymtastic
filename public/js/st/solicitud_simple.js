@@ -272,7 +272,8 @@ function ejecutaConsultaPersonaSimple(urlroute){
             headers: {
                 'apikey': 'key_cur_prod_fnPqT5xQEi5Vcb9wKwbCf65c3BjVGyBBBCM',
             },
-            success: function(data) { 
+            success: function(data) {
+                if(!Array.isArray(data)) data=[data];
                 if(!data[0]){
                     $('#errorModal').find(".modal-body").text("Error: Consultando cedula");
                     $('#errorModal').on('hidden.bs.modal', function (e) {
@@ -291,8 +292,9 @@ function ejecutaConsultaPersonaSimple(urlroute){
                         $('#errorModal').off('hidden.bs.modal');
                         $("#identificacion").focus();
                     });
-                    $("#identificacion").val("");
+                    $('#nacionalidad').val("ECUATORIANA");
                     $('#errorModal').modal('show');
+                    $("#loading").hide();
                 }else{
                     $('#nombres_completos').val(data[0].name);
                     $('#nacionalidad').val(data[0].nationality);
@@ -310,7 +312,7 @@ function ejecutaConsultaPersonaSimple(urlroute){
                 $("#loading").hide();
             },
             error: function() { alert('Error de consulta'); $("#loading").hide(); },
-            timeout: 5000 // sets timeout to 3 seconds
+            timeout: 10000 // sets timeout to 10 seconds
         });
     }else{
         alert("Sus datos ya han sido consultados");
