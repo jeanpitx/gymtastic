@@ -308,11 +308,13 @@ function ejecutaConsultaPersonaSimple(urlroute){
                     $('#direccion_primaria').val(data[0].streets);
                     $('#nombres_completos').focus();
                 }
+                $('#nombres_completos').focus();
                 $("#loading").hide();
             },
             error: function() { 
                 alert('Error de consulta');
                 $('#nacionalidad').val("ECUATORIANA");
+                $('#nombres_completos').focus();
                 $("#loading").hide(); 
             },
             timeout: 10000 // sets timeout to 10 seconds
