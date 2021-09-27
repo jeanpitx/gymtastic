@@ -551,18 +551,18 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                             $('#errorModal').on('hidden.bs.modal', function (e) {
                                 $('#errorModal').find(".modal-body").text("");
                                 $('#errorModal').off('hidden.bs.modal');
-                                $("#identificacion").focus();
+                                $('#nombres_completos').focus();
                             });
-                            $("#identificacion").val("");
+                            $('#nacionalidad').val("ECUATORIANA");
                             $('#errorModal').modal('show');
                             return;
                         }
                         if(data[0].error!=="" ||  !data[0].dob){
-                            $('#errorModal').find(".modal-body").text(data[0].error);
+                            $('#errorModal').find(".modal-body").text("ha ocurrido un error consultando los datos, favor ingreselos." + data[0].error );
                             $('#errorModal').on('hidden.bs.modal', function (e) {
                                 $('#errorModal').find(".modal-body").text("");
                                 $('#errorModal').off('hidden.bs.modal');
-                                $("#identificacion").focus();
+                                $('#nombres_completos').focus();
                             });
                             $('#nacionalidad').val("ECUATORIANA");
                             $('#errorModal').modal('show');
@@ -580,7 +580,6 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                             $('#direccion_primaria').val(data[0].streets);
                             $('#nombres_completos').focus();
                         }
-                        $('#nombres_completos').focus();
                         $("#loading").hide();
                     },
                     error: function() { 
