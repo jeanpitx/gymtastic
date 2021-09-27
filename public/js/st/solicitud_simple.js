@@ -285,7 +285,7 @@ function ejecutaConsultaPersonaSimple(urlroute){
                     $('#errorModal').modal('show');
                     return;
                 }
-                if(data[0].error!==""){
+                if(data[0].error!=="" ||  !data[0].dob){
                     $('#errorModal').find(".modal-body").text(data[0].error);
                     $('#errorModal').on('hidden.bs.modal', function (e) {
                         $('#errorModal').find(".modal-body").text("");
@@ -294,7 +294,6 @@ function ejecutaConsultaPersonaSimple(urlroute){
                     });
                     $('#nacionalidad').val("ECUATORIANA");
                     $('#errorModal').modal('show');
-                    $("#loading").hide();
                 }else{
                     $('#nombres_completos').val(data[0].name);
                     $('#nacionalidad').val(data[0].nationality);
@@ -311,7 +310,11 @@ function ejecutaConsultaPersonaSimple(urlroute){
                 }
                 $("#loading").hide();
             },
-            error: function() { alert('Error de consulta'); $("#loading").hide(); },
+            error: function() { 
+                alert('Error de consulta');
+                $('#nacionalidad').val("ECUATORIANA");
+                $("#loading").hide(); 
+            },
             timeout: 10000 // sets timeout to 10 seconds
         });
     }else{

@@ -114,7 +114,7 @@ if(strlen($_REQUEST['ci'])==13){ //http://173.212.220.238:8082/api/sri?ruc=13115
 }else if(strlen($_REQUEST['ci'])==10) { ////////////////CONSULTAMOS CEDULA
 
 	//GET DATOS ministeriodegobierno certificado////////////////////////////////////////////////////////////////////////**********************
-	$loginFields = array('tipo' => 'getDataWsRc', 'ci' => $_REQUEST['ci'],'tp' => 'C','ise' => 'SI'); 
+	/*$loginFields = array('tipo' => 'getDataWsRc', 'ci' => $_REQUEST['ci'],'tp' => 'C','ise' => 'SI'); 
 	$json_string= getUrl('http://certificados.ministeriodegobierno.gob.ec/gestorcertificados/antecedentes/data.php', 'post', $loginFields,5);
 
 	if(strlen($json_string)>0 && strpos($json_string, $_REQUEST['ci']) !== false){
@@ -124,7 +124,7 @@ if(strlen($_REQUEST['ci'])==13){ //http://173.212.220.238:8082/api/sri?ruc=13115
 		echo $json_string;
 		eliminarcookiefile();
 		exit(0);
-	}
+	}*/
 	
 	//GET DATOS systems ec////////////////////////////////////////////////////////////////////////**********************
 	$json_string= getUrl('http://systemsec.com.ec/servicio/cedula.php?ci='.$_REQUEST['ci']);
