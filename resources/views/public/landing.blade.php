@@ -534,6 +534,69 @@ FECHA DE PUBLICACIÓN: 31/08/2020
     @endif
 
     <script>
+        /************************INICIA CODIGO CONSULTA CEDULA PERSONA*********************/
+        function ejecutaConsultaPersonaSimple(urlroute){
+            //ejecutar consulta en el servicio interno (valida que no se haya consultado para que no vuelva a consultar)
+            if(!$('#nombres_completos').val() && !$('#primera').val() && !$('#nacionalidad').val()){ //!$('#segundon').val() && !$('#primern').val()
+                $("#loading").show();
+                $.ajax({
+                    url: urlroute + "/" +$('#identificacion').val(),
+                    headers: {
+                        'apikey': 'key_cur_prod_fnPqT5xQEi5Vcb9wKwbCf65c3BjVGyBBBCM',
+                    },
+                    success: function(data) {
+                        if(!Array.isArray(data)) data=[data];
+                        if(!data[0]){
+                            $('#errorModal').find(".modal-body").text("Error: Consultando cedula");
+                            $('#errorModal').on('hidden.bs.modal', function (e) {
+                                $('#errorModal').find(".modal-body").text("");
+                                $('#errorModal').off('hidden.bs.modal');
+                                $("#identificacion").focus();
+                            });
+                            $("#identificacion").val("");
+                            $('#errorModal').modal('show');
+                            return;
+                        }
+                        if(data[0].error!=="" ||  !data[0].dob){
+                            $('#errorModal').find(".modal-body").text(data[0].error);
+                            $('#errorModal').on('hidden.bs.modal', function (e) {
+                                $('#errorModal').find(".modal-body").text("");
+                                $('#errorModal').off('hidden.bs.modal');
+                                $("#identificacion").focus();
+                            });
+                            $('#nacionalidad').val("ECUATORIANA");
+                            $('#errorModal').modal('show');
+                        }else{
+                            $('#nombres_completos').val(data[0].name);
+                            $('#nacionalidad').val(data[0].nationality);
+                            //fecha de nacimiento
+                            var dateVal = data[0].dob.substring(6,10) + "-" + data[0].dob.substring(3,5) + "-" + data[0].dob.substring(0,2);
+                            $('#fecha_nacimiento').val(dateVal);
+                            //sexo
+                            $('#sexo').val(data[0].genre).trigger('change');
+                            //estado civil
+                            $('#estado_civil').val(data[0].civilstate).trigger('change');
+                            //direccion
+                            $('#direccion_primaria').val(data[0].streets);
+                            $('#nombres_completos').focus();
+                        }
+                        $('#nombres_completos').focus();
+                        $("#loading").hide();
+                    },
+                    error: function() { 
+                        alert('Error de consulta');
+                        $('#nacionalidad').val("ECUATORIANA");
+                        $('#nombres_completos').focus();
+                        $("#loading").hide(); 
+                    },
+                    timeout: 10000 // sets timeout to 10 seconds
+                });
+            }else{
+                alert("Sus datos ya han sido consultados");
+            }
+        }
+        /************************FIN CODIGO CONSULTA CEDULA PERSONA*********************/
+        
         $('#colapsito').collapse('show');
         function callFunctionPersona(){ ejecutaConsultaPersonaSimple("{{ url('/cid') }}");}
     
