@@ -265,9 +265,7 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                     <div class="w-100" id="colapsito">
                         <div class="card" style="border-radius: 0%; border-style: none;">
                             <div class="card-body px-0 py-0">
-                                <div id="loading" style="position: absolute; left:0; z-index:100; width:100%; height:100%; background:white; padding-top:10px; color:rgb(92, 89, 89); text-align:center; font-size:20px; display:none;">
-                                    <p>Consultando...</p>
-                                </div>
+                               
 
                                 <div class="title title-green w-100 col-12">
                                     <div class="offset-lg-2 col-lg-8 col-md-9 offset-md-1 col-12 h-100 d-flex align-items-center">
@@ -276,6 +274,10 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                                 </div>
                                 
                                 <div class="col-lg-8 offset-lg-2 col-md-9 offset-md-1">
+				    <div id="loading" style="position: absolute; left:0; z-index:100; width:100%; height:100%; background:white; 
+padding-top:40px; color:rgb(92, 89, 89); text-align:center; font-size:24px; display:none;">
+                                    <p>Consultando...</p>
+                                </div>
                                     <div class="form-group col-12 mt-3">
                                         <p class="form-text my-0 w-100 text-justify" style="font-size:15px; color:rgb(68, 68, 68)">
                                             <b>¡Bienvenido!</b>, Este formulario le permitira ponerse en contacto con nosotros, este es el primer paso hacia un mundo lleno de oportunidades y experiencias. <span class="text-info">Lo mas pronto posible nos contactarenmos contigo.</span>
@@ -537,7 +539,7 @@ FECHA DE PUBLICACIÓN: 31/08/2020
         /************************INICIA CODIGO CONSULTA CEDULA PERSONA*********************/
         function ejecutaConsultaPersonaSimple(urlroute){
             //ejecutar consulta en el servicio interno (valida que no se haya consultado para que no vuelva a consultar)
-            if(!$('#nombres_completos').val() && !$('#primera').val() && !$('#nacionalidad').val()){ //!$('#segundon').val() && !$('#primern').val()
+            if(!$('#nombres_completos').val() && !$('#primera').val()){ //!$('#segundon').val() && !$('#primern').val()
                 $("#loading").show();
                 $.ajax({
                     url: urlroute + "/" +$('#identificacion').val(),
@@ -547,10 +549,13 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                     success: function(data) {
                         if(!Array.isArray(data)) data=[data];
                         if(!data[0]){
-                            $('#errorModal').find(".modal-body").text("Error: Consultando cedula");
+                            $('#errorModal').find(".modal-body").html("<i>error: consultando cedula.</i> <b>Puede continuar ingresando sus datos.</b>");
+                            $('#errorModal').find(".modal-title").html("Algo ha ocurrido");
+			    $('#errorModal').find(".modal-header").addClass("bg-success").removeClass("bg-danger");
                             $('#errorModal').on('hidden.bs.modal', function (e) {
-                                $('#errorModal').find(".modal-body").text("");
+                                $('#errorModal').find(".modal-body").html("");
                                 $('#errorModal').off('hidden.bs.modal');
+			    	$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-success");
                                 $('#nombres_completos').focus();
                             });
                             $('#nacionalidad').val("ECUATORIANA");
@@ -558,10 +563,13 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                             return;
                         }
                         if(data[0].error!=="" ||  !data[0].dob){
-                            $('#errorModal').find(".modal-body").text("ha ocurrido un error consultando los datos, favor ingreselos." + data[0].error );
+                            $('#errorModal').find(".modal-body").html("<i>" + data[0].error + ".</i> <b>Puede continuar ingresando sus datos.</b>");
+                            $('#errorModal').find(".modal-title").html("Algo ha ocurrido");
+			    $('#errorModal').find(".modal-header").addClass("bg-success").removeClass("bg-danger");
                             $('#errorModal').on('hidden.bs.modal', function (e) {
-                                $('#errorModal').find(".modal-body").text("");
+                                $('#errorModal').find(".modal-body").html("");
                                 $('#errorModal').off('hidden.bs.modal');
+			    	$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-success");
                                 $('#nombres_completos').focus();
                             });
                             $('#nacionalidad').val("ECUATORIANA");
@@ -583,7 +591,18 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                         $("#loading").hide();
                     },
                     error: function() { 
-                        alert('Error de consulta');
+			$('#errorModal').find(".modal-body").html("<i>" + data[0].error + ".</i> <b>Puede continuar ingresando sus datos.</b>");
+                        $('#errorModal').find(".modal-title").html("Algo ha ocurrido");
+			$('#errorModal').find(".modal-header").addClass("bg-success").removeClass("bg-danger");
+                        $('#errorModal').on('hidden.bs.modal', function (e) {
+                        	$('#errorModal').find(".modal-body").html("");
+                        	$('#errorModal').off('hidden.bs.modal');
+				$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-success");
+                                $('#nombres_completos').focus();
+                        });
+                        $('#errorModal').modal('show');
+
+                        //alert('Error de consulta');
                         $('#nacionalidad').val("ECUATORIANA");
                         $('#nombres_completos').focus();
                         $("#loading").hide(); 
