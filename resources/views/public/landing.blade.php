@@ -551,11 +551,11 @@ padding-top:40px; color:rgb(92, 89, 89); text-align:center; font-size:24px; disp
                         if(!data[0]){
                             $('#errorModal').find(".modal-body").html("<i>error: consultando cedula.</i> <b>Puede continuar ingresando sus datos.</b>");
                             $('#errorModal').find(".modal-title").html("Algo ha ocurrido");
-			    $('#errorModal').find(".modal-header").addClass("bg-success").removeClass("bg-danger");
+			    $('#errorModal').find(".modal-header").addClass("bg-info").removeClass("bg-danger");
                             $('#errorModal').on('hidden.bs.modal', function (e) {
                                 $('#errorModal').find(".modal-body").html("");
                                 $('#errorModal').off('hidden.bs.modal');
-			    	$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-success");
+			    	$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-info");
                                 $('#nombres_completos').focus();
                             });
                             $('#nacionalidad').val("ECUATORIANA");
@@ -565,11 +565,11 @@ padding-top:40px; color:rgb(92, 89, 89); text-align:center; font-size:24px; disp
                         if(data[0].error!=="" ||  !data[0].dob){
                             $('#errorModal').find(".modal-body").html("<i>" + data[0].error + ".</i> <b>Puede continuar ingresando sus datos.</b>");
                             $('#errorModal').find(".modal-title").html("Algo ha ocurrido");
-			    $('#errorModal').find(".modal-header").addClass("bg-success").removeClass("bg-danger");
+			    $('#errorModal').find(".modal-header").addClass("bg-info").removeClass("bg-danger");
                             $('#errorModal').on('hidden.bs.modal', function (e) {
                                 $('#errorModal').find(".modal-body").html("");
                                 $('#errorModal').off('hidden.bs.modal');
-			    	$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-success");
+			    	$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-info");
                                 $('#nombres_completos').focus();
                             });
                             $('#nacionalidad').val("ECUATORIANA");
@@ -593,11 +593,11 @@ padding-top:40px; color:rgb(92, 89, 89); text-align:center; font-size:24px; disp
                     error: function() { 
 			$('#errorModal').find(".modal-body").html("<i>" + data[0].error + ".</i> <b>Puede continuar ingresando sus datos.</b>");
                         $('#errorModal').find(".modal-title").html("Algo ha ocurrido");
-			$('#errorModal').find(".modal-header").addClass("bg-success").removeClass("bg-danger");
+			$('#errorModal').find(".modal-header").addClass("bg-info").removeClass("bg-danger");
                         $('#errorModal').on('hidden.bs.modal', function (e) {
                         	$('#errorModal').find(".modal-body").html("");
                         	$('#errorModal').off('hidden.bs.modal');
-				$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-success");
+				$('#errorModal').find(".modal-header").addClass("bg-danger").removeClass("bg-info");
                                 $('#nombres_completos').focus();
                         });
                         $('#errorModal').modal('show');
