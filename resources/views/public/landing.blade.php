@@ -274,10 +274,9 @@ FECHA DE PUBLICACIÓN: 31/08/2020
                                 </div>
                                 
                                 <div class="col-lg-8 offset-lg-2 col-md-9 offset-md-1">
-				    <div id="loading" style="position: absolute; left:0; z-index:100; width:100%; height:100%; background:white; 
-padding-top:40px; color:rgb(92, 89, 89); text-align:center; font-size:24px; display:none;">
-                                    <p>Consultando...</p>
-                                </div>
+				                    <div id="loading" style="position: absolute; left:0; z-index:100; width:100%; height:100%; background:white; padding-top:40px; color:rgb(92, 89, 89); text-align:center; font-size:24px; display:none;">
+                                        <p>Consultando...</p>
+                                    </div>
                                     <div class="form-group col-12 mt-3">
                                         <p class="form-text my-0 w-100 text-justify" style="font-size:15px; color:rgb(68, 68, 68)">
                                             <b>¡Bienvenido!</b>, Este formulario le permitira ponerse en contacto con nosotros, este es el primer paso hacia un mundo lleno de oportunidades y experiencias. <span class="text-info">Lo mas pronto posible nos contactarenmos contigo.</span>
@@ -590,8 +589,8 @@ padding-top:40px; color:rgb(92, 89, 89); text-align:center; font-size:24px; disp
                         }
                         $("#loading").hide();
                     },
-                    error: function() { 
-			            $('#errorModal').find(".modal-body").html("<i>" + data[0].error + ".</i> <b>Puede continuar ingresando sus datos.</b>");
+                    error: function() {
+			            $('#errorModal').find(".modal-body").html("<i>Lo sentimos, ha ocurrido un error.</i> <b>Puede continuar ingresando sus datos.</b>");
                         $('#errorModal').find(".modal-title").html("Algo ha ocurrido");
 			            $('#errorModal').find(".modal-header").addClass("bg-info").removeClass("bg-danger");
                         $('#errorModal').on('hidden.bs.modal', function (e) {
